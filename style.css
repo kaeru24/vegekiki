@@ -1,6 +1,6 @@
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Kaku Gothic ProN", "メイリオ", sans-serif;
-  background: #f5f5f5;
+  background: rgb(255, 237, 202);
   margin: 0;
   padding: 24px;
 }
@@ -10,35 +10,63 @@ body {
   margin: 0 auto;
 }
 
-button {
-  background: #2e7d32;
-  color: white;
-  padding: 10px 18px;
-  border: none;
-  border-radius: 6px;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-button:hover {
-  background: #388e3c;
-}
-
-button:active {
-  transform: scale(0.97);
-}
-
 .vege {
+  margin-bottom: 8px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+/*　白い部分を丸ごとボタン化*/
+.toggle {
+  width: 100%;
   background: white;
-  padding: 16px;
-  margin-bottom: 5px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+  border: none;
+  padding: 14px 16px;
+  cursor: pointer;
+  
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  color: #333;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: left;
+}
+
+.toggle:active {
+  transform: scale(0.99);
+}
+
+/* 左のイラスト*/
+.toggle .icon {
+  width: 34px;
+  height: 34px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* タイトルを伸ばして矢印を右端へ*/
+.toggle .title {
+  flex: 1;
+}
+
+/* 右端の矢印 */
+.toggle .arrow {
+  color: #666;
+  font-size: 18px;
+  line-height: 1;
+}
+/* 開いたら矢印を下向きっぽくする（90度回転） */
+.toggle.is-open .arrow {
+  transform: rotate(90deg);
 }
 
 .detail {
   display: none;
-  margin-top: 8px;
+  padding: 12px 16px 16px;
+  background: white;
 }
 
 .detail.is-open {
@@ -51,4 +79,13 @@ button:active {
   border-radius: 6px;
   display: block;
   margin-bottom: 8px;
+}
+
+#search {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 12px;
+  font-size: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
 }
