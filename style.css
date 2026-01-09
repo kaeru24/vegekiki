@@ -5,11 +5,6 @@ body {
   padding: 24px;
 }
 
-.container {
-  max-width: 400px;
-  margin: 0 auto;
-}
-
 .vege {
   margin-bottom: 8px;
   border-radius: 10px;
@@ -81,48 +76,36 @@ body {
   margin-bottom: 8px;
 }
 
-#search {
-  width: 100%;
-  padding: 12px 14px;
-  margin-bottom: 12px;
-  font-size: 15px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-}
-
-/* ========== レイアウト（上：検索 / 下：左カテゴリ + 右リスト） ========== */
-
-/* appの中を「上段（検索）」と「下段（中身）」の2段にする */
 .app {
   max-width: 520px;
-  margin: 0 auto;
+  margin: 0 auto; 
 }
 
-/* 検索を中央上部に配置 */
 #search {
   display: block;
   width: 100%;
   max-width: 360px;
   margin: 0 auto 12px;
+
+  padding: 12px 14px;
+  font-size: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
 }
 
-/* 左右レイアウト */
 .main {
   display: flex;
   gap: 12px;
   align-items: flex-start;
 }
 
-/* 右側は伸びる */
 .container {
   flex: 1;
   max-width: 400px;
 }
 
-/* ========== 左：カテゴリーボタン（背景色＋画像縮小＋文字重ね） ========== */
-
 .categories {
-  width: 86px;                 /* ← 正方形の一辺（好みで変えてOK） */
+  width: 86px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -131,53 +114,71 @@ body {
 .category-btn {
   position: relative;
   width: 100%;
-  aspect-ratio: 1 / 1;         /* ← 正方形にする */
+  aspect-ratio: 1 / 1;
+
   border: none;
-  border-radius: 12px;
+  border-radius: 16px;
   cursor: pointer;
   overflow: hidden;
 
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
-/* 画像は背景にせず“小さく”置く */
+.category-btn:active {
+  transform: scale(0.98);
+}
+
 .category-btn img {
-  width: 70px;          /* 丸の枠サイズはそのまま */
+  width: 70px;
   height: 70px;
   object-fit: cover;
+
   border-radius: 50%;
   opacity: 0.95;
 
-  padding: 4px;         /* ← ここで“中身だけ”小さくなる */
-  background: rgba(255, 255, 255, 0.712); /* ← 余白部分が透ける白になる */
-
+  padding: 4px;
+  background: rgba(255, 255, 255, 0.7);
   box-sizing: border-box;
+
   position: relative;
   z-index: 1;
 }
 
-
-/* 文字を画像の上に重ねる（中央寄せ） */
 .category-text {
   position: absolute;
   left: 6px;
   right: 6px;
   bottom: 0px;
-  text-align: center;
 
+  z-index: 2;
+
+  text-align: center;
   font-size: 20px;
-  font-weight: 800;
+  font-weight: 700;
+  letter-spacing: 0.02em;
   line-height: 1.05;
   color: #222;
+
   border-radius: 999px;
   padding: 3px 6px;
-
-  z-index: 2; /* 追加：文字を画像より上に */
 }
 
-.category-btn.vege-btn { background: #b0ffbd; }
-.category-btn.fruit-btn { background: #ffe796; }
-.category-btn.fish-btn { background: #b3d9ff; }
-.category-btn.other-btn { background: #ffc2b0; }
+.category-btn.vege-btn {
+  background: linear-gradient(135deg, #b0ffbd, #8feea2);
+}
+
+.category-btn.fruit-btn {
+  background: linear-gradient(135deg, #ffe796, #ffd05c);
+}
+
+.category-btn.fish-btn {
+  background: linear-gradient(135deg, #b3d9ff, #8fc2f0);
+}
+
+.category-btn.other-btn {
+  background: linear-gradient(135deg, #ffc2b0, #ff9f87);
+}
