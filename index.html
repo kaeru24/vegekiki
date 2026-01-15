@@ -2,13 +2,24 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8" />
-  <title>『ベジ利き』買い物目利きサイト</title>
+  <title>ベジ利き-買い物目利きサイト</title>
   <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
   <div class="app">
-    <input type="text" id="search" placeholder="食材名で検索">
+    <header class="header">
+      <div class="header-inner">
+        <div class="logo">
+          <img src="vejikiki-logo.png" alt="ベジ利き">
+        </div>
+          <div class="search-wrap">
+            <input type="text" id="search" placeholder="食材名で検索">
+            <button type="button" id="clearSearch" class="clear-btn" aria-label="検索をクリア">×</button>
+          </div>
+      </div>
+    </header>
 
     <div class="main">
       <div class="categories">
@@ -25,7 +36,7 @@
           <img src="https://www.kamaboko.com/fishprotein/wp-content/uploads/2025/05/summerfish_2.jpg" alt="">
         </button>
         <button class="category-btn other-btn" data-category="others">
-          <span class="category-text">肉<br>その他</span>
+          <span class="category-text">その他</span>
           <img src="https://kuradashi.jp/cdn/shop/articles/25321756_m.jpg?v=1677148369&width=1100" alt="">
         </button>
       </div>

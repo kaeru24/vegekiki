@@ -1,10 +1,14 @@
 //
 const veges = [
   {title: "トマト", detail: "赤いの", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThGQvbl-ERbfuHJlOjgWybSFdaSK_YaMlLdQ&s"},
+  {title: "なす", detail: "むらさき", image: "https://video.kurashiru.com/production/articles/c561d08a-f9b7-4d05-b3a5-8fc31a6071b5/wide_thumbnail_normal.jpg?1749708564"},
   {title: "きゅうり", detail: "緑の", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAbwPt9sekJuWp2DThyeBzZHV1FSd2Kk-plGTLdwKv4APU2msuAv39I-M60AZdTblfUtX2aA1_6drUwwki6ugyg5JDwxe8nsncdZ03Ukox&s=10"}
 ];
 const fruits = [
   {title: "りんご", detail: "赤いの", image: "https://media.delishkitchen.tv/article/975/fd3sgtfnxen.jpeg?version=1634782151"},
+  {title: "マスカット", detail: "みどり", image: "https://agri.mynavi.jp/wp-content/uploads/2020/04/pixta_33790274_M.jpg"},
+  {title: "バナナ", detail: "きいろ", image: "https://furunavi.jp/discovery/wp-content/uploads/2023/09/202309_banana_1.jpg"},
+  {title: "キウイ", detail: "とげとげ", image: "https://media.delishkitchen.tv/article/1223/be6ho207hmc.jpeg?version=1640151733"},
   {title: "ぶどう", detail: "粒が大きいの", image: "https://iconbu.com/wp-content/uploads/2025/09/%E3%81%B6%E3%81%A9%E3%81%86%E3%81%AE%E3%82%A4%E3%83%A9%E3%82%B9%E3%83%88.jpg"}
 ];
 const fishes = [
@@ -29,6 +33,9 @@ function toKatakana(str) {
 
 let currentCategory = "all";
 
+const savedFavs = JSON.parse(localStorage.getItem("vegekiki_favorites") || "[]");
+const favorites = new Set(savedFavs);
+
 function renderFoods(foods, keyword = "") {
   const searchWord = toKatakana(keyword);
 
@@ -36,17 +43,26 @@ function renderFoods(foods, keyword = "") {
     toKatakana(food.title).includes(searchWord)
   );
 
+  const favFoods = filteredFoods.filter((f) => favorites.has(f.title));
+  const normalFoods = filteredFoods.filter((f) => !favorites.has(f.title));
+  const orderedFoods = [...favFoods, ...normalFoods];
+
   const list = document.getElementById("list");
   list.innerHTML = "";
  
-  filteredFoods.forEach((food) => {
+  orderedFoods.forEach((food) => {
     list.innerHTML += `
       <div class="vege">
-        <button class="toggle">
+        <div class="toggle" role="button" tabindex="0">
           <img class="icon" src="${food.image}" alt="">
           <span class="title">${food.title}</span>
-          <span class="arrow">></span>
-        </button>
+          <span class="right">
+            <button type="button" class="fav-btn" data-title="${food.title}">
+              ${favorites.has(food.title) ? "♥" : "♡"}
+            </button>
+            <span class="arrow">></span>
+          </span>
+        </div>
         
         <div class="detail">
           <img src="${food.image}" alt="${food.title}">
@@ -64,7 +80,9 @@ function setupAccordion() {
   const newDetails = document.querySelectorAll(".detail");
 
   newToggleBtns.forEach((btn, index) => {
-    btn.addEventListener("click", () => {
+    btn.addEventListener("click", (e) => {
+      if (e.target.closest(".fav-btn")) return;
+
       const isOpen = newDetails[index].classList.contains("is-open");
 
       newDetails.forEach((detail) =>
@@ -84,8 +102,32 @@ function setupAccordion() {
 /* 検索機能*/
 const searchInput = document.getElementById("search");
 
+document.getElementById("list").addEventListener("click", (e) => {
+  const favBtn = e.target.closest(".fav-btn");
+  if (!favBtn) return;
+
+  const title = favBtn.dataset.title;
+   if (favorites.has(title)) {
+    favorites.delete(title);
+    favBtn.textContent = "♡"; // ←見た目だけ即反映
+  } else {
+    favorites.add(title);
+    favBtn.textContent = "♥"; // ←見た目だけ即反映
+  }
+
+  localStorage.setItem("vegekiki_favorites", JSON.stringify([...favorites]));
+});
+
 searchInput.addEventListener("input", () => {
   renderFoods(foodsByCategory[currentCategory], searchInput.value);
+  setupAccordion();
+});
+
+const clearBtn = document.getElementById("clearSearch");
+
+clearBtn.addEventListener("click", () => {
+  searchInput.value = "";
+  renderFoods(foodsByCategory[currentCategory]);
   setupAccordion();
 });
 
@@ -102,6 +144,14 @@ categoryBtns.forEach((btn) => {
       currentCategory = "all";
     } else {
       currentCategory = category;
+    }
+
+    categoryBtns.forEach((b) =>
+      b.classList.remove("is-dim"));
+
+    if (currentCategory !== "all") {
+      categoryBtns.forEach((b) => b.classList.add("is-dim"));
+      btn.classList.remove("is-dim");
     }
 
     renderFoods(foodsByCategory[currentCategory], searchInput.value);
