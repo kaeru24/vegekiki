@@ -117,12 +117,12 @@ body {
 }
 
 .logo {
-  margin: -55px -18px;
-  margin-bottom: -48px;
+  margin: 0px 5px;
+  margin-bottom: 3px;
 }
 
 .logo img {
-  height: 145px;        /* 好きな高さに */
+  height: 52px;        /* 好きな高さに */
   width: auto;
   display: block; /* 余計な隙間防止 */
 }
