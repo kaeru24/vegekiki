@@ -40,7 +40,7 @@ function renderFoods(foods, keyword = "") {
   const searchWord = toKatakana(keyword);
 
   const filteredFoods = foods.filter((food) =>
-    toKatakana(food.title).includes(searchWord)
+    toKatakana(food.title).startsWith(searchWord)
   );
 
   const favFoods = filteredFoods.filter((f) => favorites.has(f.title));
