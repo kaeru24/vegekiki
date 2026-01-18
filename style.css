@@ -75,6 +75,7 @@ img{ display: block; max-width: 100%; }
   color: rgba(0,0,0,0.55);
   letter-spacing: 0.02em;
   line-height: 1.2;
+  
 }
 
 /* ===== Search ===== */
@@ -122,6 +123,15 @@ img{ display: block; max-width: 100%; }
 
   font-size: 18px;
   line-height: 1;
+
+  -webkit-appearance: none;
+  appearance: none;
+  flex: 0 0 30px;
+
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;  
 
   transition: transform 120ms ease, background 120ms ease;
 }
@@ -310,10 +320,21 @@ img{ display: block; max-width: 100%; }
   font-size: 20px;
   line-height: 1;
 
-  display: grid;
-  place-items: center;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  -webkit-appearance: none;
+  appearance: none;
+  flex: 0 0 30px;
 
   transition: transform 120ms ease, background 120ms ease;
+}
+
+.clear-btn, .fav-btn{
+  min-width: 30px;
+  max-width: 30px;
 }
 
 .fav-btn:hover{ background: rgba(255, 94, 94, 0.16); }
