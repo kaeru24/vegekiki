@@ -378,11 +378,12 @@ img{ display: block; max-width: 100%; }
 
 .detail img{
   width: 100%;
-  max-width: 260px;
+  max-width: 360px;
   border-radius: 10px;
-  margin-bottom: 10px;
+  margin: 0 auto 10px;   /* ←中央寄せ（上0 / 左右auto / 下10px） */
   border: 1px solid rgba(0,0,0,0.08);
 }
+
 
 .detail p{
   margin: 0;
