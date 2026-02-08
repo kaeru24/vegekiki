@@ -272,6 +272,7 @@ img{ display: block; max-width: 100%; }
   background: rgba(255,255,255,0.96);
   padding: 14px 12px;
   cursor: pointer;
+  border: none;
 
   display: flex;
   align-items: center;
@@ -370,20 +371,20 @@ img{ display: block; max-width: 100%; }
 }
 
 .detail.is-open{
-  max-height: 520px;
+  max-height: 1200px;
   opacity: 1;
   transform: translateY(0);
-  padding: 12px 12px 16px;
+  padding: 0;
 }
 
 .detail img{
   width: 100%;
-  max-width: 360px;
-  border-radius: 10px;
-  margin: 0 auto 10px;   /* ←中央寄せ（上0 / 左右auto / 下10px） */
-  border: 1px solid rgba(0,0,0,0.08);
+  max-width: none;       /* 260px制限を解除 */
+  margin: 0;             /* 下の余白も消す */
+  border-radius: 12px;   /* 角丸はお好みで（0にすると完全にピッタリ） */
+  border: 0;             /* 枠いらなければ */
+  display: block;
 }
-
 
 .detail p{
   margin: 0;
