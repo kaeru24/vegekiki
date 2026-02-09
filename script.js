@@ -79,22 +79,22 @@ const fruits = [
   {title: "栗", detail: "", image: "fruits-images/栗.png", detailImage: "fruits-details/kuri.png"},
   {title: "かぼす", detail: "", image: "fruits-images/かぼす.png", detailImage: "fruits-details/kabosu.png"},
   
-  {title: "びわ", detail: "", image: "fruits-images/びわ.png", detailImage: ""},
-  {title: "すもも", detail: "", image: "fruits-images/すもも.png", detailImage: ""},
-  {title: "あんず", detail: "", image: "fruits-images/あんず.png", detailImage: ""},
+  {title: "びわ", detail: "掲載予定", image: "fruits-images/びわ.png", detailImage: ""},
+  {title: "すもも", detail: "掲載予定", image: "fruits-images/すもも.png", detailImage: ""},
+  {title: "あんず", detail: "掲載予定", image: "fruits-images/あんず.png", detailImage: ""},
 
-  {title: "デコポン", detail: "", image: "fruits-images/デコポン.png", detailImage: ""},
-  {title: "ゆず", detail: "", image: "fruits-images/ゆず.png", detailImage: ""},
-  {title: "すだち", detail: "", image: "fruits-images/すだち.png", detailImage: ""},
+  {title: "デコポン", detail: "掲載予定", image: "fruits-images/デコポン.png", detailImage: ""},
+  {title: "ゆず", detail: "掲載予定", image: "fruits-images/ゆず.png", detailImage: ""},
+  {title: "すだち", detail: "掲載予定", image: "fruits-images/すだち.png", detailImage: ""},
 
-  {title: "ザクロ", detail: "", image: "fruits-images/ざくろ.png", detailImage: ""},
-  {title: "ラズベリー", detail: "", image: "fruits-images/ラズベリー.png", detailImage: ""},
-  {title: "ブラックベリー", detail: "", image: "fruits-images/ブラックベリー.png", detailImage: ""},
-  {title: "クランベリー", detail: "", image: "fruits-images/クランベリー.png", detailImage: ""},
+  {title: "ザクロ", detail: "掲載予定", image: "fruits-images/ざくろ.png", detailImage: ""},
+  {title: "ラズベリー", detail: "掲載予定", image: "fruits-images/ラズベリー.png", detailImage: ""},
+  {title: "ブラックベリー", detail: "掲載予定", image: "fruits-images/ブラックベリー.png", detailImage: ""},
+  {title: "クランベリー", detail: "掲載予定", image: "fruits-images/クランベリー.png", detailImage: ""},
 
-  {title: "ドラゴンフルーツ", detail: "", image: "fruits-images/ドラゴンフルーツ.png", detailImage: ""},
-  {title: "パッションフルーツ", detail: "", image: "fruits-images/パッションフルーツ.png", detailImage: ""},
-  {title: "ライチ", detail: "", image: "fruits-images/ライチ.png", detailImage: ""},
+  {title: "ドラゴンフルーツ", detail: "掲載予定", image: "fruits-images/ドラゴンフルーツ.png", detailImage: ""},
+  {title: "パッションフルーツ", detail: "掲載予定", image: "fruits-images/パッションフルーツ.png", detailImage: ""},
+  {title: "ライチ", detail: "掲載予定", image: "fruits-images/ライチ.png", detailImage: ""},
 ];
 
 const fishes = [
