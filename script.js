@@ -141,13 +141,13 @@ const fishes = [
 ];
 
 const others = [
-  {title: "しいたけ", detail: "", image: "veges-images2/シイタケ.webp", detailImage: "veges-details2/siitake.webp"},
-  {title: "しめじ", detail: "", image: "veges-images2/しめじ.webp", detailImage: "veges-details2/simeji.webp"},
-  {title: "えのき", detail: "", image: "veges-images2/えのき.webp", detailImage: "veges-details2/enoki.webp"},
-  {title: "まいたけ", detail: "", image: "veges-images2/マイタケ.webp", detailImage: "veges-details2/maitake.webp"},
-  {title: "エリンギ", detail: "", image: "veges-images2/エリンギ.webp", detailImage: "veges-details2/erinngi.webp"},
-  {title: "なめこ", detail: "", image: "veges-images2/なめこ.webp", detailImage: "veges-details2/nameko.webp"},
-  {title: "きくらげ", detail: "", image: "veges-images2/きくらげ.webp", detailImage: "veges-details2/kikurage.webp"},
+  {title: "しいたけ", detail: "", image: "other-images2/シイタケ.webp", detailImage: "other-details2/siitake.webp"},
+  {title: "しめじ", detail: "", image: "other-images2/しめじ.webp", detailImage: "other-details2/simeji.webp"},
+  {title: "えのき", detail: "", image: "other-images2/えのき.webp", detailImage: "other-details2/enoki.webp"},
+  {title: "まいたけ", detail: "", image: "other-images2/マイタケ.webp", detailImage: "other-details2/maitake.webp"},
+  {title: "エリンギ", detail: "", image: "other-images2/エリンギ.webp", detailImage: "other-details2/erinngi.webp"},
+  {title: "なめこ", detail: "", image: "other-images2/なめこ.webp", detailImage: "other-details2/nameko.webp"},
+  {title: "きくらげ", detail: "", image: "other-images2/きくらげ.webp", detailImage: "other-details2/kikurage.webp"},
 
   { title: "牛肉", detail: "掲載予定", image: "other-images2/牛肉.webp", detailImage: "" },
   { title: "豚肉", detail: "掲載予定", image: "other-images2/豚肉.webp", detailImage: "" },
