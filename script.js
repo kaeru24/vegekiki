@@ -1,6 +1,6 @@
 //
 const veges = [
-  {title: "トマト", detail: "", image: "veges-images2/トマト.webp", detailImage: "veges-details2/tomato.webp"},
+  {title: "トマト", detail: "", image: "veges-images2/トマト.webp", detailImage: "veges-details2/tomato2.webp"},
   {title: "きゅうり", detail: "", image: "veges-images2/きゅうり.webp", detailImage: "veges-details2/kyuuri.webp"},
   {title: "ナス", detail: "", image: "veges-images2/なす.webp", detailImage: "veges-details2/nasu.webp"},
   {title: "じゃがいも", detail: "", image: "veges-images2/じゃがいも.webp", detailImage: "veges-details2/potato.webp"},
