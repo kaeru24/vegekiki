@@ -19,7 +19,7 @@
 *{ box-sizing: border-box; }
 html, body {
   height: 100%;
-  overflow: hidden; /* ページ自体はスクロールさせない */
+  overflow: hidden; /* ページ全体ではなくリストエリアだけスクロールさせるための設定 */
 }
 
 body{
@@ -71,8 +71,7 @@ img{ display: block; max-width: 100%; }
 .logo img{ height: 52px; width: auto; }
 
 .catch{
-  margin: 0;                 /* 横に置くので0にする */
-  margin-top: 6px;
+  margin: 6px 0 0 0;
   font-size: 13px;
   font-weight: 700;
   color: rgba(0,0,0,0.55);
@@ -162,7 +161,7 @@ img{ display: block; max-width: 100%; }
   overflow-x: hidden;
 
   -webkit-overflow-scrolling: touch; /* iOSのスクロール滑らか */
-  overscroll-behavior: contain;      /* 余ったスクロールがページに伝播しない */
+  overscroll-behavior: contain;      /* スクロールが画面全体に広がらないようにする */
 
   scrollbar-gutter: stable;
 }
@@ -412,4 +411,12 @@ img{ display: block; max-width: 100%; }
 
 @media (prefers-reduced-motion: reduce){
   *{ transition: none !important; }
+}
+
+/* ===== 検索結果なし ===== */
+.no-result{
+  text-align: center;
+  color: var(--text);
+  opacity: 0.5;
+  padding: 2rem 0;
 }

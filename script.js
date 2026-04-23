@@ -1,4 +1,5 @@
-//
+// ===== 食材データ =====
+
 const veges = [
   {title: "トマト", detail: "", image: "veges-images2/トマト.webp", detailImage: "veges-details2/tomato2.webp"},
   {title: "きゅうり", detail: "", image: "veges-images2/きゅうり.webp", detailImage: "veges-details2/kyuuri.webp"},
@@ -154,12 +155,15 @@ const others = [
   { title: "鶏肉", detail: "掲載予定", image: "other-images2/鶏肉.webp", detailImage: "" }
 ];
 
-/*対応表*/
+// 絞り込み、全件表示に使う
 const foodsByCategory = {veges: veges, fruits: fruits, fishes: fishes, others: others};
 
 foodsByCategory.all = [...veges, ...fruits, ...fishes, ...others];
 
-// 読み仮名（必要なものから増やす）
+
+// ===== 読み仮名マップ =====
+// 大根と打ってもだいこんと打っても検索できるようにするためのもの
+
 const yomiMap = {
   "大根": "だいこん",
   "にんじん": "人参",
@@ -242,7 +246,9 @@ const yomiMap = {
 };
 
 
-/*検索機能*/
+// ===== 検索・表示 =====
+
+// ひらがな→カタカナ変換（きゅうりとキュウリどちらで検索しても引っかかるようにする）
 function toKatakana(str) {
   return str.replace(/[\u3041-\u3096]/g, (ch) =>
     String.fromCharCode(ch.charCodeAt(0) + 0x60)
@@ -251,17 +257,22 @@ function toKatakana(str) {
 
 let currentCategory = "all";
 
-const savedFavs = JSON.parse(localStorage.getItem("vegekiki_favorites") || "[]");
-const favorites = new Set(savedFavs);
+let favorites = new Set();
+try {
+  const saved = JSON.parse(localStorage.getItem("vegekiki_favorites") || "[]");
+  favorites = new Set(saved);
+} catch {
+}
 
+//お気に入り登録済みのものを上に表示
 function renderFoods(foods, keyword = "") {
   const searchWord = toKatakana(keyword);
 
-const filteredFoods = foods.filter((food) => {
-  const titleKata = toKatakana(food.title);
-  const yomiKata = toKatakana(yomiMap[food.title] || "");
-  return titleKata.startsWith(searchWord) || yomiKata.startsWith(searchWord);
-});
+  const filteredFoods = foods.filter((food) => {
+    const titleKata = toKatakana(food.title);
+    const yomiKata = toKatakana(yomiMap[food.title] || "");
+    return titleKata.startsWith(searchWord) || yomiKata.startsWith(searchWord);
+  });
 
 
   const favFoods = filteredFoods.filter((f) => favorites.has(f.title));
@@ -269,6 +280,12 @@ const filteredFoods = foods.filter((food) => {
   const orderedFoods = [...favFoods, ...normalFoods];
 
   const list = document.getElementById("list");
+
+  // 検索結果が0件の場合はメッセージを表示
+  if (orderedFoods.length === 0) {
+    list.innerHTML = '<p class="no-result">見つかりませんでした</p>';
+    return;
+  }
 
   let html = "";
   orderedFoods.forEach((food) => {
@@ -296,7 +313,8 @@ const filteredFoods = foods.filter((food) => {
   list.innerHTML = html;
 }
 
-/* 検索機能*/
+// ===== イベント処理 =====
+
 const searchInput = document.getElementById("search");
 
 document.getElementById("list").addEventListener("click", (e) => {
@@ -306,10 +324,10 @@ document.getElementById("list").addEventListener("click", (e) => {
   const title = favBtn.dataset.title;
    if (favorites.has(title)) {
     favorites.delete(title);
-    favBtn.textContent = "♡"; // ←見た目だけ即反映
+    favBtn.textContent = "♡";
   } else {
     favorites.add(title);
-    favBtn.textContent = "♥"; // ←見た目だけ即反映
+    favBtn.textContent = "♥";
   }
 
   localStorage.setItem("vegekiki_favorites", JSON.stringify([...favorites]));
@@ -318,10 +336,10 @@ document.getElementById("list").addEventListener("click", (e) => {
 const listEl = document.getElementById("list");
 
 listEl.addEventListener("click", (e) => {
-  // ① ハートを押した時は「開閉」しない
+  // ① ハートを押した時は開閉しない
   if (e.target.closest(".fav-btn")) return;
 
-  // ② クリックされた場所が「どのtoggleの中か」を特定する
+  // ② クリックされた場所がどのtoggleの中かを特定する
   const toggle = e.target.closest(".toggle");
   if (!toggle) return;
 
@@ -353,6 +371,8 @@ clearBtn.addEventListener("click", () => {
   searchInput.value = "";
   renderFoods(foodsByCategory[currentCategory]);
 });
+
+// ===== 初期化 =====
 
 renderFoods(foodsByCategory[currentCategory]);
 
@@ -395,7 +415,6 @@ function updateHeaderOffset() {
 window.addEventListener("load", updateHeaderOffset);
 window.addEventListener("resize", updateHeaderOffset);
 
-// iOS対策（アドレスバーの出入りで高さが変わることがある）
 if (window.visualViewport) {
   window.visualViewport.addEventListener("resize", updateHeaderOffset);
 }
